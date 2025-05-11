@@ -12,8 +12,8 @@ use App\Http\Controllers\PelanggaranController;
 use App\Http\Controllers\Skor_pelanggaranController;
 use App\Http\Controllers\Monitoring_pelanggaranController;
 use App\Http\Controllers\AbsensiController;
-use App\Http\Controllers\MonitoringAbsensiController;
-use App\Http\Controllers\VerifikasiAbsensiController;
+use App\Http\Controllers\JurusanController;
+
 
 Route::middleware(['guest'])->group(function(){ //agar sesudah login dan berada di halaman admin tidak bisa mengakses halaman login
     Route::get('/',[SesiController::class,'index'])->name('login'); //name('login'); supaya ketika kita mengakses link lain dan tidak login makan akan ter rediren ke halaman login
@@ -39,7 +39,10 @@ Route::middleware(['auth'])->group(function(){ // supaya ketika kita mengakses l
 
     Route::get('/superadmin/guru/index', [GuruController::class, 'index']);
     Route::resource('guru', \App\Http\Controllers\GuruController::class);
-    
+
+    Route::get('/superadmin/jurusan/index', [JurusanController::class, 'index']);
+    Route::resource('jurusan', \App\Http\Controllers\JurusanController::class);
+
     Route::get('/superadmin/kelas/index', [KelasController::class, 'index']);
     Route::resource('kelas', \App\Http\Controllers\KelasController::class);
     Route::get('/kelas/{id}', [KelasController::class, 'show'])->name('kelas.show');

@@ -90,7 +90,7 @@
                                         <tbody>
                                             @foreach($absensiHariIni as $index => $absen)
                                                 <tr>
-                                                    <td>{{ $index + 1 }}</td>
+                                                    <td>{{ $index ++ }}</td>
                                                     <td>{{ $absen->siswa->nama_siswa }}</td>
                                                     <td>{{ ucfirst($absen->status) }}</td>
                                                     <td>{{ $absen->status_surat ?? '-' }}</td>

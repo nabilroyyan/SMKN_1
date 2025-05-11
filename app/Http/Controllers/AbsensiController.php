@@ -75,7 +75,7 @@ class AbsensiController extends Controller
                 'hari_tanggal' => $hari_tanggal,
                 'id_users' => $user_id,
                 'status' => $status,
-                'status_surat' => in_array($status, ['izin', 'sakit', 'alpha']) ? 'pending' : null,
+                'status_surat' => in_array($status, ['hadir', 'alpha']) ? 'approved' : 'pending',
             ];
     
             // Upload surat jika ada

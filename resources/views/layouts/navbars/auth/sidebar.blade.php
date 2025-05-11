@@ -110,7 +110,7 @@
         <a class="nav-link {{ (Request::is('superadmin/kelas/index') ? 'active' : '') }}" href="{{ url('superadmin/kelas/index') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                    <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <title>guru</title>
+                    <title>kelas</title>
                     <g id="Basic-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <g id="Rounded-Icons" transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
                             <g id="Icons-with-opacity" transform="translate(1716.000000, 291.000000)">
@@ -130,7 +130,7 @@
       <li class="nav-item mt-2">
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Pelanggaran</h6>
         <li class="nav-item">
-          <a class="nav-link {{ (Request::is('superadmin/skor-pelanggaran/index') ? 'active' : '') }}" href="{{ url('superadmin/skor-pelanggaran/index') }}">
+          <a class="nav-link {{ Request::is('superadmin/skor-pelanggaran/index') ? 'active' : '' }}" href="{{ url('superadmin/skor-pelanggaran/index') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Pelanggaran</title>
@@ -151,7 +151,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ (Request::is('superadmin/catatan-pelanggarann/index') ? 'active' : '') }}" href="{{ url('superadmin/catatan-pelanggaran/index') }}">
+          <a class="nav-link {{ Request::is('superadmin/catatan-pelanggaran/index') ? 'active' : '' }}" href="{{ url('superadmin/catatan-pelanggaran/index') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Catatan</title>
@@ -172,7 +172,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ (Request::is('superadmin/monitoring-pelanggarann/index') ? 'active' : '') }}" href="{{ url('superadmin/monitoring-pelanggaran/index') }}">
+          <a class="nav-link {{ Request::is('superadmin/monitoring-pelanggaran/index') ? 'active' : '' }}" href="{{ url('superadmin/monitoring-pelanggaran/index') }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Monitoring</title>
@@ -197,7 +197,7 @@
         <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Absensi</h6>
         <li class="nav-item">
           @if ($kelas)
-              <a class="nav-link {{ Request::is('superadmin/absensi/'.$kelas->id) ? 'active' : '' }}" href="{{ route('absensi.catatan', ['kelas_id' => $kelas->id]) }}">
+          <a class="nav-link {{ Route::is('absensi.catatan') && request('kelas_id') == $kelas->id ? 'active' : '' }}" href="{{ route('absensi.catatan', ['kelas_id' => $kelas->id]) }}">
                   <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                       <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                           <title>Absensi</title>
@@ -221,7 +221,7 @@
       
         <li class="nav-item">
           @if ($kelas)
-          <a class="nav-link {{ Request::is('superadmin/absensi/'.$kelas->id) ? 'active' : '' }}" href="{{ route('absensi.validasi', ['kelas_id' => $kelas->id]) }}">
+          <a class="nav-link {{ Request::routeIs('absensi.validasi') && request('kelas_id') == $kelas->id ? 'active' : '' }}" href="{{ route('absensi.validasi', ['kelas_id' => $kelas->id]) }}">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Verifikasi</title>
