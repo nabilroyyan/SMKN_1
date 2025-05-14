@@ -13,6 +13,12 @@ class JurusanController extends Controller
         return view('jurusan.index', compact('jurusan'));
     }
 
+    public function create()
+    {
+        $jurusan = Jurusan::all();
+        return view('jurusan.create', compact('jurusan'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -21,13 +27,13 @@ class JurusanController extends Controller
 
         Jurusan::create($request->all());
 
-        return redirect()->back()->with('success', 'Jurusan berhasil ditambahkan.');
+        return redirect()->route('jurusan.index')->with('message', 'jurusan berhasil dibuat.');
     }
 
     public function destroy($id)
     {
         Jurusan::findOrFail($id)->delete();
-        return redirect()->back()->with('success', 'Jurusan berhasil dihapus.');
+        return redirect()->route('jurusan.index')->with('message', 'jurusan berhasil dihapus.');
     }
 }
 

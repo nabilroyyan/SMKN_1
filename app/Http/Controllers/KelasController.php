@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use App\Models\Jurusan;
 use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Siswa;
@@ -19,24 +20,25 @@ class KelasController extends Controller
     
     public function show($id)
     {
-        $kelas = Kelas::with(['guru', 'siswas'])->findOrFail($id);
+        $kelas = Kelas::with(['guru', 'siswas','jurusan'])->findOrFail($id);
         return view('kelas.show', compact('kelas'));
     }
 
     public function create()
     {
         $gurus = Guru::whereDoesntHave('kelas')->get();
+        $jurusans = Jurusan::whereDoesntHave('kelas')->get();
+        
         $users = User::all();
-        return view('kelas.create', compact('gurus','users'));
+        return view('kelas.create', compact('gurus','users','jurusans'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'nama_kelas' => 'required|string|max:255',
-            'jurusan' => 'required|string|max:255',
             'tinkat' => 'required|string|max:255',
             'id_guru' => 'required|exists:guru,id',
+            'jurusan_id' => 'required|exists:jurusan,id',
         ]);
     
         // Cek apakah guru sudah menjadi wali di kelas lain
@@ -48,11 +50,10 @@ class KelasController extends Controller
 
         // Simpan kelas baru
         Kelas::create([
-            'nama_kelas' => $request->nama_kelas,
-            'jurusan' => $request->jurusan,
             'tinkat' => $request->tinkat,
             'id_guru' => $request->id_guru,
             'id_users' => $request->id_users,
+            'jurusan_id' => $request->jurusan_id,
         ]);
     
         return redirect()->route('kelas.index')->with('message', 'Kelas berhasil dibuat.');

@@ -34,9 +34,6 @@
                                     ID
                                 </th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    Class Name
-                                </th>
-                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     jurusan
                                 </th>
                                 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -57,10 +54,7 @@
                                         <p class="text-xs font-weight-bold mb-0">{{ $index + 1 }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $class->nama_kelas }}</p>
-                                    </td>
-                                    <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $class->jurusan }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $class->jurusan->nama_jurusan ?? 'Belum ada jurusan' }}</p>
                                     </td>
                                     <td class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">{{ $class->tinkat }}</p>

@@ -50,8 +50,6 @@ Route::middleware(['auth'])->group(function(){ // supaya ketika kita mengakses l
     Route::post('kelas/{kelas}/add-siswa', [KelasController::class, 'addSiswa'])->name('kelas.add-siswa');
     Route::delete('/kelas/{kelas}/siswa/{siswa}', [KelasController::class, 'removeSiswa'])->name('kelas.remove-siswa');
 
-    
-
     Route::prefix('superadmin/skor-pelanggaran')->name('skor-pelanggaran.')->group(function () {
         Route::get('/index', [Skor_pelanggaranController::class, 'index'])->name('index');
         Route::get('/create', [Skor_pelanggaranController::class, 'create'])->name('create');

@@ -32,48 +32,20 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="nama_kelas" class="form-control-label">{{ __('Nama Kelas') }}</label>
-                                <input class="form-control" value="{{ old('nama_kelas') }}" type="text" placeholder="Nama Kelas" name="nama_kelas">
-                                @error('nama_kelas')
-                                    <p class="text-danger text-xs mt-2">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="jurusan" class="form-control-label">{{ __('Jurusan') }}</label>
-                                <input class="form-control" value="{{ old('jurusan') }}" type="text" placeholder="Jurusan" name="jurusan">
-                                @error('jurusan')
-                                    <p class="text-danger text-xs mt-2">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="tinkat" class="form-control-label">{{ __('Tingkat') }}</label>
-                                <select name="tinkat" class="form-control">
-                                    <option value="">-- Pilih Tingkat --</option>
-                                    <option value="1" {{ old('tinkat') == '1' ? 'selected' : '' }}>1</option>
-                                    <option value="2" {{ old('tinkat') == '2' ? 'selected' : '' }}>2</option>
-                                    <option value="3" {{ old('tinkat') == '3' ? 'selected' : '' }}>3</option>
-                                </select>
-                                @error('tinkat')
-                                    <p class="text-danger text-xs mt-2">{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="id_guru" class="form-control-label">{{ __('Guru') }}</label>
-                                <select name="id_guru" class="form-control">
-                                    <option value="">-- Pilih Guru --</option>
-                                    @foreach($gurus as $g)
-                                        <option value="{{ $g->id }}" {{ old('id_guru') == $g->id ? 'selected' : '' }}>{{ $g->nama_guru }}</option>
+                                <label for="jurusan_id" class="form-control-label">{{ __('nama jurusan') }}</label>
+                                <select name="jurusan_id" class="form-control">
+                                    <option value="">-- Pilih Jurusan --</option>
+                                    @foreach($jurusans as $jurusan)
+                                        <option value="{{ $jurusan->id }}" {{ old('jurusan_id') == $jurusan->id ? 'selected' : '' }}>
+                                            @if ($jurusan)
+                                            {{ $jurusan->nama_jurusan }}
+                                        @else
+                                            <span class="text-muted">Jurusan belum ditentukan</span>
+                                        @endif
+                                    </option>
                                     @endforeach
                                 </select>
-                                @error('id_guru')
+                                @error('jurusan_id')
                                     <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -92,6 +64,36 @@
                                     @endif
                                 </select>
                                 @error('id_users')
+                                    <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="tinkat" class="form-control-label">{{ __('Tingkat') }}</label>
+                                <select name="tinkat" class="form-control">
+                                    <option value="">-- Pilih Tingkat --</option>
+                                    <option value="1" {{ old('tinkat') == '1' ? 'selected' : '' }}>IX</option>
+                                    <option value="2" {{ old('tinkat') == '2' ? 'selected' : '' }}>X</option>
+                                    <option value="3" {{ old('tinkat') == '3' ? 'selected' : '' }}>XI</option>
+                                </select>
+                                @error('tinkat')
+                                    <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="id_guru" class="form-control-label">{{ __('Guru') }}</label>
+                                <select name="id_guru" class="form-control">
+                                    <option value="">-- Pilih Guru --</option>
+                                    @foreach($gurus as $g)
+                                        <option value="{{ $g->id }}" {{ old('id_guru') == $g->id ? 'selected' : '' }}>{{ $g->nama_guru }}</option>
+                                    @endforeach
+                                </select>
+                                @error('id_guru')
                                     <p class="text-danger text-xs mt-2">{{ $message }}</p>
                                 @enderror
                             </div>
